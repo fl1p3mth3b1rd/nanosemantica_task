@@ -1,0 +1,21 @@
+version: "1.0"
+services:
+  db:
+    image: postgres:10
+    restart: always
+    environment:
+      POSTGRES_USER: "test_user"
+      POSTGRES_PASSWORD: "test_user_pass"
+      POSTGRES_DB: "users_db"
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      # поставить 0, если:
+      #   - не нужны тестовые данные для БД
+      #   - контейнер с БД запускатеся не в первый раз (с учетом, что volume не был удален)
+      - create_dummy_data=0
