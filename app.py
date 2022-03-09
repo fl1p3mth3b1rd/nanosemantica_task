@@ -1,5 +1,4 @@
 from aiohttp import web
-from aiohttp_swagger import setup_swagger
 
 from src.settings import config
 from src.routes import setup_routes
