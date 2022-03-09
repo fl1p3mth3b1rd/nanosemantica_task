@@ -14,9 +14,8 @@ def init_app(config) -> web.Application:
 
 def start():
     """Запуск приложения"""
-    # create_dummy_db()
+    create_dummy_db()
     app = init_app(config)
-    setup_swagger(app)
     web.run_app(app)
 
 if "__main__" == __name__:
